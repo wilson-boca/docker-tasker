@@ -1,0 +1,14 @@
+*.xml
+.idea
+*.pyc
+.pytest_cache
+.coverage
+htmlcov
+junit
+.coveralls.yml
+.env
+details.log
+logged_errors.csv
+celerybeat-schedule.bak
+celerybeat-schedule.dat
+celerybeat-schedule.dir

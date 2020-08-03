@@ -1,0 +1,37 @@
+version: "3"
+services:
+  flask-api:
+    image: tasker
+    container_name: flask_api
+    ports:
+      - "8000:8000"
+    command: ./api.sh
+  celery-broker:
+    image: tasker
+    container_name: celery_tasker
+    command: /usr/local/bin/init.sh
+    environment:
+      - TZ=America/Sao_Paulo
+    ports:
+      - "2222:2222"
+    links:
+      - redis:6-alpine
+    volumes:
+      - app-volume:/src/static
+    restart: on-failure
+    depends_on:
+      - redis
+    env_file: .env
+  redis:
+    hostname: redis
+    image: redis:latest
+    container_name: redis
+    environment:
+      - TZ=America/Sao_Paulo
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-volume:/var/lib/redis
+volumes:
+  app-volume:
+  redis-volume:

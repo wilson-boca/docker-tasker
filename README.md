@@ -1,6 +1,6 @@
 # Docker Tasker
 
-Python scheduled tasks running in a Docker instance
+Python scheduled tasks running on a docker-compose environment
 
 ### Installing
 
